@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>First Django Blog</title>
+	<link rel="stylesheet" type="text/css" href=" {% static "static/css/foundation.css" %}">
+</head>
+<body>
+<div class="top-bar">
+	<section class="top-bar-right">
+		<ul class="right">
+			{% if username %}
+				<li><a href="/auth/logout/">Log Out ({{ username }})</a></li>
+			{% else %}
+				<li><a href="/auth/login/">Log in</a></li>
+			{% endif %}
+		</ul>
+	</section>
+</div>
+	<h2><a href="/">Blog</a></h2>
+	<div class="row">
+	{% block article %}{% endblock %}
+	{% block login %}{% endblock %}
+	</div>
+</body>
+</html>
